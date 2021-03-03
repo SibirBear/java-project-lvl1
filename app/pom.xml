@@ -15,15 +15,11 @@
     <maven.version>3.6.3.</maven.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.sourceEncoding>UTF-8</project.reporting.sourceEncoding>
-    <maven.compiler.release>${java.version} </maven.compiler.release>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+
 
     <!--Libs-->
-    <log4j-slf4j-impl.version>2.14.0</log4j-slf4j-impl.version>
-    <vavr.version>1.0.0-alpha-3</vavr.version>
-    <junit-jupiter.version>5.3.1</junit-jupiter.version>
-    <junit-jupiter-params.version>5.8.0-M1</junit-jupiter-params.version>
-    <junit-jupiter-engine.version>5.8.0-M1</junit-jupiter-engine.version>
-    <assertj-core.version>3.19.0</assertj-core.version>
 
     <!--Plugins-->
     <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
@@ -40,39 +36,11 @@
 
 
   <dependencies>
-  
-     <!-- COMMON LIBS (Log4J2 & Vavr) -->
-    <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-slf4j-impl</artifactId>
-      <version>${log4j-slf4j-impl.version}</version>
-      <optional>true</optional>
-    </dependency>
-      <dependency>
-      <groupId>io.vavr</groupId>
-      <artifactId>vavr</artifactId>
-      <version>${vavr.version}</version>
-    </dependency>
+
+
+    <!-- COMMON LIBS (Log4J2 & Vavr) -->
 
     <!-- TEST (JUnit 5 & Mockito) -->
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-params</artifactId>
-      <version>${junit-jupiter-params.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.assertj</groupId>
-      <artifactId>assertj-core</artifactId>
-      <version>${assertj-core.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-engine</artifactId>
-      <version>${junit-jupiter-engine.version}</version>
-      <scope>test</scope>
-    </dependency>
 
   </dependencies>
 
@@ -80,11 +48,30 @@
 
     <plugins>
 
+      <!-- COMPILER (Java10+ and lombok compatible) -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${maven-compiler-plugin.version}</version>
+        <configuration>
+          <compilerArgs>
+            <arg>-parameters</arg>
+          </compilerArgs>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>org.ow2.asm</groupId>
+            <artifactId>asm</artifactId>
+            <version>${asm.version}</version> <!-- Use newer version of ASM -->
+          </dependency>
+        </dependencies>
+      </plugin>
+
 	<!--Minimum Maven version -->
 	<plugin>
 	  <groupId>org.apache.maven.plugins</groupId>
 	  <artifactId>maven-enforcer-plugin</artifactId>
-	  <version>maven-enforcer-plugin.version}</version>
+	  <version>${maven-enforcer-plugin.version}</version>
 	  <executions>
 	    <execution>
 		<id>enforce-maven</id>
@@ -101,6 +88,44 @@
 	    </execution>
 	  </executions>
 	</plugin>
+
+        <!--JAR plugin-->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-assembly-plugin</artifactId>
+	  <version>${maven-assembly-plugin.version}</version>
+	  <configuration>
+	    <archive>
+	      <manifest>
+		<mainClass>hexlet.code.App</mainClass>
+	      </manifest>
+	    </archive>
+	    <descriptorRefs>
+	      <descriptorRef>jar-with-dependencies</descriptorRef>
+	    </descriptorRefs>
+	  </configuration>
+	  <executions>
+            <execution>
+  	      <id>make-assembly</id>
+	      <phase>package</phase>
+              <goals>
+                <goal>single</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+
+	  <!-- SUREFIRE (compatible with JUnit 5+, Java 9+, Lombok) -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${maven-surefire-plugin.version}</version>
+        <configuration>
+          <includes>
+            <include>**/*Test.java</include>
+          </includes>
+        </configuration>
+      </plugin>
 
     </plugins>
 
