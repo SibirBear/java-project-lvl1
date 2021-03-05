@@ -1,15 +1,14 @@
 package hexlet.code;
 
-import java.util.Scanner;
+import static hexlet.code.EnterVar.enterVar;
 
 public class Cli {
-    public static void greeting() {
-        System.out.println("Welcome to the Brain Games!");
+    public static String greeting() {
+        System.out.print("\nWelcome to the Brain Games!\n");
         System.out.print("May I have your name? ");
-
-        Scanner sc = new Scanner(System.in);
-        
-        System.out.format("Hello, %s!\n", sc.nextLine());
+        String player = enterVar();
+        System.out.println("Hello, " + player + "!");
+        return player;
     }
 }
 
