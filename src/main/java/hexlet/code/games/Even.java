@@ -7,12 +7,14 @@ public class Even {
 
     private static final int LAST_RND_NUMBER = 100;
     private static final int COUNT_OF_TRIES = 3;
-    private static int count, countCorrectAnswer;
+    private static int count;
+    private static int countCorrectAnswer;
 
     public static void even() {
         String player = greeting();
 
-        System.out.println("Answer 'yes' if number even otherwise answer 'no'.");
+        System.out.println(
+                "Answer 'yes' if number even otherwise answer 'no'.");
 
         while (count != COUNT_OF_TRIES){
             int questionNumber = randomNumber();
@@ -33,7 +35,7 @@ public class Even {
             }
             count++;
         }
-        if(countCorrectAnswer == COUNT_OF_TRIES) {
+        if (countCorrectAnswer == COUNT_OF_TRIES) {
             System.out.println("Congratulations!");
         }
     }
@@ -42,7 +44,7 @@ public class Even {
         return (int) (Math.random() * LAST_RND_NUMBER);
     }
 
-    private static boolean isEven(int number) {
-        return 0 == number%2;
+    private static boolean isEven(final int number) {
+        return 0 == number % 2;
     }
 }

@@ -19,6 +19,7 @@ public class App {
         switch (numberChoice) {
             case "1": greeting();
             case "2": even();
+            default:
         }
 
     }
