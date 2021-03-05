@@ -16,7 +16,7 @@ public class Even {
         System.out.println(
                 "Answer 'yes' if number even otherwise answer 'no'.");
 
-        while (count != COUNT_OF_TRIES){
+        while (count != COUNT_OF_TRIES) {
             int questionNumber = randomNumber();
             System.out.println("Question: " + questionNumber);
             System.out.print("Your answer: ");
