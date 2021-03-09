@@ -8,7 +8,6 @@ import static hexlet.code.Engine.isEvenCheck;
 public class Even {
 
     private static int count;
-    private static int countCorrectAnswer;
 
     public static void even(final int lastRndNumber,
                             final int countOfTries) {
@@ -18,7 +17,7 @@ public class Even {
         System.out.println(
                 "Answer 'yes' if number even otherwise answer 'no'.");
 
-        while (count != countOfTries) {
+        while (count < countOfTries) {
             int questionNumber = generateRandomNumber(lastRndNumber);
             System.out.println("Question: " + questionNumber);
             System.out.print("Your answer: ");
@@ -28,17 +27,18 @@ public class Even {
 
             if (correctAnswer.equals(userAnswer)) {
                 System.out.println("Correct!");
-                countCorrectAnswer++;
+                count++;
             } else {
                 System.out.println("'" + userAnswer
                         + "' is wrong answer ;(. Correct answer was '"
                         + correctAnswer + "'.");
                 System.out.println("Let's try again, " + player + "!");
+                count = countOfTries * 10;
             }
-            count++;
         }
-        if (countCorrectAnswer == countOfTries) {
-            System.out.println("Congratulations!");
+
+        if (count == countOfTries) {
+            System.out.println("Congratulations " + player + "!");
         }
     }
 

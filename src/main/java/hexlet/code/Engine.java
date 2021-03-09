@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import static hexlet.code.Cli.greeting;
+import static hexlet.code.games.Calculator.calculator;
 import static hexlet.code.games.Even.even;
 
 public class Engine {
@@ -20,6 +21,7 @@ public class Engine {
         System.out.print("Please enter the game number and press Enter.\n"
                 + "1 - Greet\n"
                 + "2 - Even\n"
+                + "3 - Calc\n"
                 + "0 - Exit\n");
 
         System.out.print("Your choice: ");
@@ -29,6 +31,8 @@ public class Engine {
             case 1: greeting();
                 break;
             case 2: even(LAST_RND_NUMBER, COUNT_OF_TRIES);
+                break;
+            case 3: calculator(LAST_RND_NUMBER, COUNT_OF_TRIES);
             default:
         }
     }
@@ -53,6 +57,20 @@ public class Engine {
     //Генератор случайного числа
     public static int generateRandomNumber(final int lastNumber) {
         return (int) (Math.random() * lastNumber);
+    }
+
+    //Генератор операции для калькулятора
+    public static String generateOperation(final int lastNumber) {
+        final int qtyOperation = 3; //кол-во операций: +, -, *
+        int result = generateRandomNumber(lastNumber);
+        if (result < lastNumber / qtyOperation) {
+            return "+";
+        } else if (result >= lastNumber / qtyOperation
+                & result < qtyOperation * 2) {
+            return "*";
+        } else {
+            return "-";
+        }
     }
 
     //Проверка на четность
