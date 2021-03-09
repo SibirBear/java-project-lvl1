@@ -8,8 +8,11 @@ import static hexlet.code.games.Even.even;
 
 public class Engine {
 
-    private static final int LAST_RND_NUMBER = 100; // - диапазон от 0 до указанного значения для генератора случайных чисел
-    private static final int COUNT_OF_TRIES = 3;    // - кол-во попыток в каждой игре
+    // - диапазон от 0 до указанного значения для генератора
+    // случайных чисел
+    private static final int LAST_RND_NUMBER = 100;
+    // - кол-во попыток в каждой игре
+    private static final int COUNT_OF_TRIES = 3;
 
     public static void menuGames() {
         int selectNumberMenu;
@@ -32,10 +35,10 @@ public class Engine {
 
     //Цифровой ввод
     public static int enterNumber() {
-        final Scanner in = new Scanner (System.in);
+        final Scanner in = new Scanner(System.in);
         try {
             return in.nextInt();
-        } catch (final InputMismatchException e){
+        } catch (final InputMismatchException e) {
             System.out.println("ERROR! This is not a number! Repeat enter.");
             return enterNumber();
         }
@@ -43,7 +46,7 @@ public class Engine {
 
     //Строковый ввод
     public static String enterVar() {
-        final Scanner sc = new Scanner (System.in);
+        final Scanner sc = new Scanner(System.in);
         return sc.nextLine();
     }
 

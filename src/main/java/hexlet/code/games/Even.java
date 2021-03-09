@@ -1,22 +1,25 @@
 package hexlet.code.games;
 
 import static hexlet.code.Cli.greeting;
-import static hexlet.code.Engine.*;
+import static hexlet.code.Engine.enterVar;
+import static hexlet.code.Engine.generateRandomNumber;
+import static hexlet.code.Engine.isEvenCheck;
 
 public class Even {
 
     private static int count;
     private static int countCorrectAnswer;
 
-    public static void even(final int LAST_RND_NUMBER, final int COUNT_OF_TRIES) {
+    public static void even(final int lastRndNumber,
+                            final int countOfTries) {
 
         final String player = greeting();
 
         System.out.println(
                 "Answer 'yes' if number even otherwise answer 'no'.");
 
-        while (count != COUNT_OF_TRIES) {
-            int questionNumber = generateRandomNumber(LAST_RND_NUMBER);
+        while (count != countOfTries) {
+            int questionNumber = generateRandomNumber(lastRndNumber);
             System.out.println("Question: " + questionNumber);
             System.out.print("Your answer: ");
 
@@ -34,7 +37,7 @@ public class Even {
             }
             count++;
         }
-        if (countCorrectAnswer == COUNT_OF_TRIES) {
+        if (countCorrectAnswer == countOfTries) {
             System.out.println("Congratulations!");
         }
     }
