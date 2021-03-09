@@ -33,7 +33,7 @@ public class Even {
                         + "' is wrong answer ;(. Correct answer was '"
                         + correctAnswer + "'.");
                 System.out.println("Let's try again, " + player + "!");
-                count = countOfTries * 10;
+                count = countOfTries * countOfTries;
             }
         }
 

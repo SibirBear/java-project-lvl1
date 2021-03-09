@@ -1,13 +1,15 @@
 package hexlet.code.games;
 
 import static hexlet.code.Cli.greeting;
-import static hexlet.code.Engine.*;
+import static hexlet.code.Engine.generateOperation;
+import static hexlet.code.Engine.generateRandomNumber;
+import static hexlet.code.Engine.enterNumber;
 
 public class Calculator {
 
     private static int count;
 
-    public static void calculator (final int lastRndNumber,
+    public static void calculator(final int lastRndNumber,
                                    final int countOfTries) {
 
         final String player = greeting();
@@ -20,7 +22,7 @@ public class Calculator {
             String questionOperation = generateOperation(lastRndNumber);
 
             int result;
-            switch(questionOperation) {
+            switch (questionOperation) {
                 case "+": result = questionNumberOne + questionNumberTwo;
                     break;
                 case "*": result = questionNumberOne * questionNumberTwo;
@@ -42,7 +44,7 @@ public class Calculator {
                         + " is wrong answer ;(. Correct answer was '"
                         + result + "'.");
                 System.out.println("Let's try again, " + player + "!");
-                count = countOfTries + 10;
+                count = countOfTries * countOfTries;
             }
         }
 
