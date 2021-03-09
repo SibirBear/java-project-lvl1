@@ -11,9 +11,9 @@ public class Engine {
 
     // - диапазон от 0 до указанного значения для генератора
     // случайных чисел
-    private static final int LAST_RND_NUMBER = 100;
+    private static final int lastRndNum = 100;
     // - кол-во попыток в каждой игре
-    private static final int COUNT_OF_TRIES = 3;
+    private static final int triesForGame = 3;
 
     public static void menuGames() {
         int selectNumberMenu;
@@ -30,9 +30,9 @@ public class Engine {
         switch (selectNumberMenu) {
             case 1: greeting();
                 break;
-            case 2: even(LAST_RND_NUMBER, COUNT_OF_TRIES);
+            case 2: even(lastRndNum, triesForGame);
                 break;
-            case 3: calculator(LAST_RND_NUMBER, COUNT_OF_TRIES);
+            case 3: calculator(lastRndNum, triesForGame);
             default:
         }
     }
