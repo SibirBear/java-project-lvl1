@@ -6,6 +6,7 @@ import java.util.Scanner;
 import static hexlet.code.Cli.greeting;
 import static hexlet.code.games.Calculator.calculator;
 import static hexlet.code.games.Even.even;
+import static hexlet.code.games.GCD.gcdGame;
 
 public class Engine {
 
@@ -13,7 +14,7 @@ public class Engine {
     // случайных чисел
     private static final int LAST_RND_NUMBERS = 100;
     // - кол-во попыток в каждой игре
-    private static int triesForGame = 3;
+    private static final int TRIES_FOR_GAME = 3;
 
     public static void menuGames() {
         int selectNumberMenu;
@@ -22,6 +23,7 @@ public class Engine {
                 + "1 - Greet\n"
                 + "2 - Even\n"
                 + "3 - Calc\n"
+                + "4 - GCD\n"
                 + "0 - Exit\n");
 
         System.out.print("Your choice: ");
@@ -30,9 +32,11 @@ public class Engine {
         switch (selectNumberMenu) {
             case 1: greeting();
                 break;
-            case 2: even(LAST_RND_NUMBERS, triesForGame);
+            case 2: even(LAST_RND_NUMBERS, TRIES_FOR_GAME);
                 break;
-            case 3: calculator(LAST_RND_NUMBERS, triesForGame);
+            case 3: calculator(LAST_RND_NUMBERS, TRIES_FOR_GAME);
+                break;
+            case 4: gcdGame(LAST_RND_NUMBERS, TRIES_FOR_GAME);
             default:
         }
     }
