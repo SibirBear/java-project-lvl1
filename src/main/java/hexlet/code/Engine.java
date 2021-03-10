@@ -19,7 +19,7 @@ public class Engine {
     private static final int TRIES_FOR_GAME = 3;
 
     public static void menuGames() {
-        int selectNumberMenu;
+        String selectNumberMenu;
 
         System.out.print("Please enter the game number and press Enter.\n"
                 + "1 - Greet\n"
@@ -31,20 +31,20 @@ public class Engine {
                 + "0 - Exit\n");
 
         System.out.print("Your choice: ");
-        selectNumberMenu = enterNumber();
+        selectNumberMenu = String.valueOf(enterNumber());
 
         switch (selectNumberMenu) {
-            case 1: greeting();
+            case "1": greeting();
                 break;
-            case 2: even(LAST_RND_NUMBERS, TRIES_FOR_GAME);
+            case "2": even(LAST_RND_NUMBERS, TRIES_FOR_GAME);
                 break;
-            case 3: calculator(LAST_RND_NUMBERS, TRIES_FOR_GAME);
+            case "3": calculator(LAST_RND_NUMBERS, TRIES_FOR_GAME);
                 break;
-            case 4: gcd(LAST_RND_NUMBERS, TRIES_FOR_GAME);
+            case "4": gcd(LAST_RND_NUMBERS, TRIES_FOR_GAME);
                 break;
-            case 5: progression(TRIES_FOR_GAME);
+            case "5": progression(TRIES_FOR_GAME);
                 break;
-            case 6: prime(LAST_RND_NUMBERS, TRIES_FOR_GAME);
+            case "6": prime(LAST_RND_NUMBERS, TRIES_FOR_GAME);
             default:
         }
     }
