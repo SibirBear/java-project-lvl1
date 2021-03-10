@@ -3,7 +3,7 @@ package hexlet.code.games;
 import static hexlet.code.Cli.greeting;
 import static hexlet.code.Engine.generateOperation;
 import static hexlet.code.Engine.generateRandomNumber;
-import static hexlet.code.Engine.enterNumber;
+import static hexlet.code.Engine.numberCheckAnswerAndView;
 
 public class Calculator {
 
@@ -33,19 +33,9 @@ public class Calculator {
             System.out.println("Question: " + questionNumberOne
                     + " " + questionOperation
                     + " " + questionNumberTwo);
-            System.out.print("Your answer: ");
-            int userAnswer = enterNumber();
 
-            if (result == userAnswer) {
-                System.out.println("Correct!");
-                count++;
-            } else {
-                System.out.println("'" + userAnswer + "'"
-                        + " is wrong answer ;(. Correct answer was '"
-                        + result + "'.");
-                System.out.println("Let's try again, " + player + "!");
-                count = countOfTries * countOfTries;
-            }
+            count = numberCheckAnswerAndView(
+                    result, player, count, countOfTries);
         }
 
         if (count == countOfTries) {

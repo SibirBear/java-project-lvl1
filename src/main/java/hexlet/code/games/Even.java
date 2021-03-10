@@ -20,6 +20,7 @@ public class Even {
         while (count < countOfTries) {
             int questionNumber = generateRandomNumber(lastRndNumber);
             System.out.println("Question: " + questionNumber);
+
             System.out.print("Your answer: ");
 
             String userAnswer = enterVar();

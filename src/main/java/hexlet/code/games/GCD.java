@@ -2,13 +2,13 @@ package hexlet.code.games;
 
 import static hexlet.code.Cli.greeting;
 import static hexlet.code.Engine.generateRandomNumber;
-import static hexlet.code.Engine.enterNumber;
+import static hexlet.code.Engine.numberCheckAnswerAndView;
 
 public class GCD {
 
     private static int count;
 
-    public static void gcdGame(final int lastRndNumber,
+    public static void gcd(final int lastRndNumber,
                            final int countOfTries) {
 
         final String player = greeting();
@@ -20,23 +20,13 @@ public class GCD {
 
             int numberOne = generateRandomNumber(lastRndNumber);
             int numberTwo = generateRandomNumber(lastRndNumber);
-            int result = gcd(numberOne, numberTwo);
+            int result = gcdExp(numberOne, numberTwo);
 
             System.out.println("Question: " + numberOne
                     + " " + numberTwo);
-            System.out.print("Your answer: ");
-            int userAnswer = enterNumber();
 
-            if (result == userAnswer) {
-                System.out.println("Correct!");
-                count++;
-            } else {
-                System.out.println("'" + userAnswer + "'"
-                        + " is wrong answer ;(. Correct answer was '"
-                        + result + "'.");
-                System.out.println("Let's try again, " + player + "!");
-                count = countOfTries * countOfTries;
-            }
+            count = numberCheckAnswerAndView(
+                    result, player, count, countOfTries);
         }
 
         if (count == countOfTries) {
@@ -46,7 +36,7 @@ public class GCD {
     }
 
     //Вычисляем НОД
-    private static int gcd(final int numOne, final int numTwo) {
+    private static int gcdExp(final int numOne, final int numTwo) {
         int a = numOne;
         int b = numTwo;
 
