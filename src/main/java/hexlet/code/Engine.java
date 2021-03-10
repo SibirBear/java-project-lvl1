@@ -102,7 +102,8 @@ public class Engine {
 
     //Проверка на простое число
     public static boolean isPrimeCheck(final int number) {
-        for (int i = 2; i <= number; i++) {
+        if (number == 1) return false;
+        for (int i = 2; i * i <= number; i++) {
             if (number % i == 0) {
                 return false;
             }
