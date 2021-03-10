@@ -31,7 +31,7 @@ public class Prime {
         }
 
         if (count == countOfTries) {
-            System.out.println("Congratulations " + player + "!");
+            System.out.println("Congratulations, " + player + "!");
         }
 
     }

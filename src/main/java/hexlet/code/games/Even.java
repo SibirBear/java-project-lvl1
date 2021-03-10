@@ -32,7 +32,7 @@ public class Even {
         }
 
         if (count == countOfTries) {
-            System.out.println("Congratulations " + player + "!");
+            System.out.println("Congratulations, " + player + "!");
         }
     }
 

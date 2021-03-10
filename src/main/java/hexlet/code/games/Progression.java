@@ -44,19 +44,6 @@ public class Progression {
             count = numberCheckAnswerAndView(
                     result, player, count, countOfTries);
 
-/*            System.out.print("Your answer: ");
-            int userAnswer = enterNumber();
-
-            if (result == userAnswer) {
-                System.out.println("Correct!");
-                count++;
-            } else {
-                System.out.println("'" + userAnswer + "'"
-                        + " is wrong answer ;(. Correct answer was '"
-                        + result + "'.");
-                System.out.println("Let's try again, " + player + "!");
-                count = countOfTries * countOfTries;
-            }*/
         }
 
         if (count == countOfTries) {
