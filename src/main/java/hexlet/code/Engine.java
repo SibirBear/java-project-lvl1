@@ -7,6 +7,7 @@ import static hexlet.code.Cli.greeting;
 import static hexlet.code.games.Calculator.calculator;
 import static hexlet.code.games.Even.even;
 import static hexlet.code.games.GCD.gcd;
+import static hexlet.code.games.Prime.prime;
 import static hexlet.code.games.Progression.progression;
 
 public class Engine {
@@ -26,6 +27,7 @@ public class Engine {
                 + "3 - Calc\n"
                 + "4 - GCD\n"
                 + "5 - Progression\n"
+                + "6 - Prime\n"
                 + "0 - Exit\n");
 
         System.out.print("Your choice: ");
@@ -41,6 +43,8 @@ public class Engine {
             case 4: gcd(LAST_RND_NUMBERS, TRIES_FOR_GAME);
                 break;
             case 5: progression(TRIES_FOR_GAME);
+                break;
+            case 6: prime(LAST_RND_NUMBERS, TRIES_FOR_GAME);
             default:
         }
     }
@@ -96,7 +100,17 @@ public class Engine {
         return 0 == number % 2;
     }
 
-    //Запрос ответа на вопрос в игре и вывод результата
+    //Проверка на простое число
+    public static boolean isPrimeCheck(final int number) {
+        for (int i = 2; i <= number; i++) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    //Запрос цифрового ответа на вопрос в игре и вывод результата
     public static int numberCheckAnswerAndView(final int result,
                                                final String player,
                                                final int count,
@@ -112,6 +126,25 @@ public class Engine {
             System.out.println("'" + userAnswer + "'"
                     + " is wrong answer ;(. Correct answer was '"
                     + result + "'.");
+            System.out.println("Let's try again, " + player + "!");
+            countCheck = tries * tries;
+        }
+        return countCheck;
+    }
+
+    //Запрос буквенного ответа на вопрос и вывод результата
+    public static int stringCheckAnswerAndView(
+            final String correctAnswer, final String userAnswer,
+            final int count, final String player, final int tries) {
+
+        int countCheck = count;
+        if (correctAnswer.equals(userAnswer)) {
+            System.out.println("Correct!");
+            countCheck++;
+        } else {
+            System.out.println("'" + userAnswer
+                    + "' is wrong answer ;(. Correct answer was '"
+                    + correctAnswer + "'.");
             System.out.println("Let's try again, " + player + "!");
             countCheck = tries * tries;
         }
