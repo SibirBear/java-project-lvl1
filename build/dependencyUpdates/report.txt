@@ -1,0 +1,10 @@
+
+------------------------------------------------------------
+: Project Dependency Updates (report to plain text file)
+------------------------------------------------------------
+
+The following dependencies are using the latest milestone version:
+ - com.github.ben-manes.versions:com.github.ben-manes.versions.gradle.plugin:0.39.0
+
+Gradle release-candidate updates:
+ - Gradle: [7.2 -> 7.3-rc-1]
