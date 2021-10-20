@@ -4,7 +4,27 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
 [![Java CI](https://github.com/SibirBear/java-project-lvl1/actions/workflows/maven.yml/badge.svg)](https://github.com/SibirBear/java-project-lvl1/actions/workflows/maven.yml)
 
+### To launch the application
+
+Maven:
+--
+1. make update
+2. make buildM
+3. make run
+
+To run checkstyle: make lintM
+
+
+Gradle
+--
+1. make chek-updates
+2. make install
+3. make run-dist
+
+To run checkstyle: make lint
+
 Presentation of games:
+--
 
 Even:
 [![asciicast](https://asciinema.org/a/Ifeut8ujXbPAuH7U0Fiw8yzxJ.svg)](https://asciinema.org/a/Ifeut8ujXbPAuH7U0Fiw8yzxJ)
