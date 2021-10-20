@@ -1,5 +1,10 @@
+
+
 #Makefile for the First Project on the course Java on Hexlet
 build:
+	./gradlew clean build
+
+buildM:
 	./mvnw clean package
 
 run:
@@ -9,6 +14,9 @@ update:
 	./mvnw versions:update-properties
 
 lint:
+	./gradlew checkstyleMain
+
+lintM:
 	./mvnw checkstyle:check
 
 install:
