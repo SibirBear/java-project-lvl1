@@ -17,7 +17,7 @@ To run checkstyle: make lintM
 
 Gradle
 --
-1. make chek-updates
+1. make check-updates
 2. make install
 3. make run-dist
 
